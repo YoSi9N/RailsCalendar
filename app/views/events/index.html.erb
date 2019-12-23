@@ -1,0 +1,52 @@
+<div class="form-content">
+  <div class="form-bottom">
+    <div class="form">
+      <%= form_with(model: @event, local: true, id: :send) do |form| %>
+        <h3 class="form__add">イベント追加</h3>
+        <div>
+          <p>イベント名</p>
+          <%= form.text_field :title, class: :title %>
+        </div>
+        
+          <p>イベント開始</p>
+          <div class="form__start">
+            <%= form.datetime_select :start, class: :start %>
+          </div>
+          <p>イベント終了</p>
+          <div class="form__end">
+           <%= form.datetime_select :end, class: :end %>
+          </div>
+          <%= form.submit "登録", class: :send %>
+          <% end %>
+          <div class="form__cancel">
+          キャンセル
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div id="update-form" class="update-form">
+  <div class="form-bottom">
+    <div class="form">
+      <%= form_with( model: @event, local: true, id: :update, method: :patch) do |form| %>
+        <h3 class="form__add">イベント編集</h3>
+        <div>
+          <p>イベント名変更</p>
+          <%= form.text_field :title, class: :"update-title", id: :"update-title" %>
+        </div>
+          <%= form.submit "更新", class: :send %>
+          <% end %>
+        <div class="form__destroy">
+          イベント削除
+        </div>
+          <div class="form__cancel">
+          キャンセル
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="calendar-box">
+  <div id='calendar'></div>
+</div>
+
