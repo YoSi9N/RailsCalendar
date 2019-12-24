@@ -42,10 +42,10 @@ class EventsController < ApplicationController
   end
   private
   def event_params
-    params.permit(:title, :start, :end)
+    params.permit(:title, :start, :end, :color_id)
   end
   def time_params
-    params.require(:event).permit(:title,:start,:end,)
+    params.require(:event).permit(:title,:start,:end, :color_id)
   end
   def startTime
     timestart = params[:"start(1i)"] + params[:"start(2i)"] + params[:"start(3i)"] + params[:"start(4i)"] + params[:"start(5i)"]

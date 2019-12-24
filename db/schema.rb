@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_051002) do
     t.string "title"
     t.datetime "start"
     t.datetime "end"
-    t.boolean "allDay"
+    t.integer "color_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

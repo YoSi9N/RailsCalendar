@@ -64,3 +64,5 @@ gem 'jquery-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'pry-rails'
+gem 'active_hash'
+

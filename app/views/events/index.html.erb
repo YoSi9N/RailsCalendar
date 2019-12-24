@@ -16,6 +16,10 @@
           <div class="form__end">
            <%= form.datetime_select :end, class: :end %>
           </div>
+          <div class="form__color">
+            <p>色:</p>
+            <%= form.collection_select :color_id, Color.all, :id, :name%>
+          </div>
           <%= form.submit "登録", class: :send %>
           <% end %>
           <div class="form__cancel">
@@ -34,6 +38,10 @@
           <p>イベント名変更</p>
           <%= form.text_field :title, class: :"update-title", id: :"update-title" %>
         </div>
+          <div class="form__color">
+            <p>色</p>
+            <%= form.collection_select :color_id, Color.all, :id, :name,{}, {id: :"update-color_id"} %>
+          </div>
           <%= form.submit "更新", class: :send %>
           <% end %>
         <div class="form__destroy">

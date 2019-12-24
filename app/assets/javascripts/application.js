@@ -24,7 +24,7 @@ $(document).ready(function(){
   $('#calendar').fullCalendar({
     
     header:{
-      left:'prev,next,today',
+      left:'prev,today,next',
       center:'title,eventListButton',
       right:'month agendaWeek agendaDay'
   },
@@ -37,6 +37,34 @@ $(document).ready(function(){
       }
     }
   },
+  eventRender: function(event, element) {
+    color_id = (event.color_id)
+    if(color_id == 1){
+      $(element).addClass("event-red");
+    }else if(color_id == 2){
+      $(element).addClass("event-blue");
+    }else if(color_id == 3){
+      $(element).addClass("event-yellow");
+    }else if(color_id == 4){
+      $(element).addClass("event-black");
+    }else if(color_id == 5){
+      $(element).addClass("event-white");
+    }else if(color_id == 6){
+      $(element).addClass("event-gray");
+    }else if(color_id == 7){
+      $(element).addClass("event-green");
+    }else if(color_id == 8){
+      $(element).addClass("event-orange");
+    }else if(color_id == 9){
+      $(element).addClass("event-pink");
+    }else if(color_id == 10){
+      $(element).addClass("event-purple");
+    }else if(color_id == 11){
+      $(element).addClass("event-brown");
+    }else{
+
+    }
+  },
   eventLimit: true,
   editable: true,        // 編集可
   selectable: true,      // 選択可
@@ -46,7 +74,7 @@ $(document).ready(function(){
   snapDuration: '00:01:00',              // スケジュールをスナップするときの動かせる細かさ
   allDaySlot: false,
   height : 600,
-  eventColor: 'red',
+  
   
   eventClick: function(event) { //イベントをクリックしたときに実行
     //編集
@@ -59,9 +87,11 @@ $(document).ready(function(){
       var url = `/events/${event.id}`
       e.preventDefault()
       title = $(".update-title").val()
+      color = $("#update-color_id").val()
       eventdata = 
         {event:{
-          title: title
+          title: title,
+          color_id: color
         }
       }
       if (event == ""){ //イベントデータがないならイベント終わり
@@ -147,7 +177,6 @@ $(document).ready(function(){
   $(".form__cancel").click(function(){
     $(".form-content").hide()
   })
-
 
   $("#send").on("submit",function(e){
     e.preventDefault()
