@@ -20,7 +20,6 @@
 
 //= require_tree .
 $(document).ready(function(){
-  
   $('#calendar').fullCalendar({
     
     header:{
@@ -28,7 +27,7 @@ $(document).ready(function(){
       center:'title,eventListButton',
       right:'month agendaWeek agendaDay'
   },
-   events: '/events',
+  events: `/events`,
   customButtons:{
     eventListButton:{
         text: 'イベント追加',
@@ -39,6 +38,7 @@ $(document).ready(function(){
   },
   eventRender: function(event, element) {
     color_id = (event.color_id)
+    
     if(color_id == 1){
       $(element).addClass("event-red");
     }else if(color_id == 2){
@@ -71,10 +71,12 @@ $(document).ready(function(){
   selectHelper: true,    // 選択時にプレースホルダーを描画
   ignoreTimezone: false, // 自動選択解除
   slotDuration: '00:30:00',              // 表示する時間軸の細かさ
-  snapDuration: '00:01:00',              // スケジュールをスナップするときの動かせる細かさ
+  snapDuration: '00:01:00',
+  axisFormat: 'H:mm',
+  timeFormat: 'H:mm',              
   allDaySlot: false,
-  height : 600,
-  
+  height : 625,
+
   
   eventClick: function(event) { //イベントをクリックしたときに実行
     //編集
@@ -82,6 +84,7 @@ $(document).ready(function(){
     $(".update-title").val(event.title)
     $(".form__cancel").click(function(){
       $(".update-form").hide()
+      event = ""
     })
     $("#update").on("submit",function(e){
       var url = `/events/${event.id}`
@@ -117,6 +120,9 @@ $(document).ready(function(){
 
     $(".form__destroy").click(function(){
       url = `/events/${event.id}`
+      if (event == ""){ //イベントデータがないならイベント終わり
+        return false
+      }
       $.ajax({
         url: url,
         type: "delete",
@@ -127,10 +133,11 @@ $(document).ready(function(){
         $(".update-form").hide()
         $("#calendar").fullCalendar('refetchEvents')
         $(".send").prop("disabled", false)
+        event = ""
       })
       .fail(function(){
         $(".send").prop("disabled", false)
-
+        event = ""
       })
     })
   },
@@ -183,6 +190,7 @@ $(document).ready(function(){
     $(".form-content").hide()
     var formData = new FormData(this);
     var url = $(this).attr("action");
+    console.log(url)
     $.ajax({
       url: url,
       type: "POST",
