@@ -40,7 +40,7 @@
         </div>
           <div class="form__color">
             <p>色</p>
-            <%= form.collection_select :color_id, Color.all, :id, :name%>
+            <%= form.collection_select :color_id, Color.all, :id, :name,{}, {id: :"update-color_id"} %>
           </div>
           <%= form.submit "更新", class: :send %>
           <% end %>

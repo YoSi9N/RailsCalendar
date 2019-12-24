@@ -87,6 +87,7 @@ $(document).ready(function(){
       var url = `/events/${event.id}`
       e.preventDefault()
       title = $(".update-title").val()
+      color = $("#update-color_id").val()
       eventdata = 
         {event:{
           title: title,
