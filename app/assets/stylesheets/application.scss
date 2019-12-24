@@ -229,7 +229,10 @@ input, select {
 }
 .calendar-box{
   height: 650px;
-  border: solid 25px skyblue;
+  border-left: solid 25px  skyblue;
+  border-right: solid 25px  skyblue;
+  border-bottom: solid 25px  skyblue;
+
 }
 .fc-center div{
   display: flex;
@@ -240,6 +243,28 @@ input, select {
 .fc-toolbar{
   padding: 10px;
 }
+.header{
+  background-color: rgba(0, 0, 0, 0.541);
+  height: 50px;
+  line-height: 30px;
+  padding: 10px 30px;
+  color: white;
+  &__right{
+    float: right;
+    display: flex;
+    &--btn{
+      display: block;
+      border: solid 1px white;
+      margin-left: 30px;
+      color: white;
+      text-decoration: none;
+      height: 30px;
+      width: 100px;
+      text-align: center;
+    }
+  }
+}
+
 
 
 

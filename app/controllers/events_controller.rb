@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :startTime, :endTime, only: [:create]
   def index
-    @events = Event.all
+    @events = Event.where(user_id: current_user.id)
     respond_to do |format|
       format.html
       format.json { render json: @events }
@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   def new
   end
   def create
-    
     if startTime < endTime
       @event = Event.create(event_params)
       if @event.save
@@ -38,11 +37,10 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-
   end
   private
   def event_params
-    params.permit(:title, :start, :end, :color_id)
+    params.permit(:title, :start, :end, :color_id).merge(user_id: current_user.id)
   end
   def time_params
     params.require(:event).permit(:title,:start,:end, :color_id)
