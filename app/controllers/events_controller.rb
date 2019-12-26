@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :setting_allday_true, only: [:create]
 
   def index
     require "date"
@@ -27,8 +26,10 @@ class EventsController < ApplicationController
           format.json
         end
       end
-    else
+    elsif params[:"start(1i)"]
+      setting_allday_true
       if @start_allday_true <= @end_allday_true
+        
         @event = Event.create(event_params)
         if @event.save
         else
@@ -39,6 +40,17 @@ class EventsController < ApplicationController
           format.json
         end
       end
+    else
+      
+      @event = Event.create(event_params_allday)
+      if @event.save
+      else
+        render :index
+      end
+      respond_to do |format|
+        format.html
+        format.json
+      end
     end
 
     
@@ -46,6 +58,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(time_params)
+    
     if  @event.save
       respond_to do |format|
         format.html
@@ -62,6 +75,9 @@ class EventsController < ApplicationController
   private
   def event_params
     params.permit(:title,:start, :end, :color_id, :allDay).merge(user_id: current_user.id)
+  end
+  def event_params_allday
+    params.require(:event).permit(:title,:start,:end, :color_id,:allDay).merge(user_id: current_user.id)
   end
   def time_params
     params.require(:event).permit(:title,:start,:end, :color_id)

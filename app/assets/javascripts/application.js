@@ -63,6 +63,9 @@ $(document).ready(function(){
     }else{
 
     }
+    if(event.allDay == true){
+      $(element).css("text-align", "center")
+    }
   },
   eventLimit: true,
   editable: true,        // 編集可
@@ -75,6 +78,37 @@ $(document).ready(function(){
   timeFormat: 'H:mm',              
   height : 625,
   allDaySlot: false,
+  
+  select: function(start,end){
+
+    var set_start = new Date(start)
+    var set_end = new Date(end)
+    start_1 = set_start.setDate(set_start.getDate() + 1)
+    end_1 = set_end.setDate(set_end.getDate())
+    eventdata ={
+      event:{
+        start: start.format("YYYY-MM-DD"),
+        end: end.format("YYYY-MM-DD"),
+        color_id: 1,
+        allDay: true,
+      }
+    }
+    if(start_1 != end_1){
+    $.ajax({
+      url: "/events",
+      type: "post",
+      data: eventdata,
+      dataType: "json"
+    })
+    .done(function(){
+      $("#calendar").fullCalendar('refetchEvents')
+      
+    })
+    .fail(function(){
+      alert('作成できませんでした');
+    })
+    }
+  },
   
   eventClick: function(event) { //イベントをクリックしたときに実行
     //編集
@@ -247,7 +281,7 @@ $(document).ready(function(){
     })
     .fail(function(){
       $(".send").prop("disabled", false);
-      alert('作成できませんでした');
+      alert('終了をスタートより遅い時間にしてください');
     })
 
   })
