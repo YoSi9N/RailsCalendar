@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_031323) do
     t.datetime "start"
     t.datetime "end"
     t.integer "color_id"
-    t.boolean "allday", default: false, null: false
+    t.boolean "allDay", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

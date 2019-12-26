@@ -38,7 +38,6 @@ $(document).ready(function(){
   },
   eventRender: function(event, element) {
     color_id = (event.color_id)
-    
     if(color_id == 1){
       $(element).addClass("event-red");
     }else if(color_id == 2){
@@ -74,12 +73,12 @@ $(document).ready(function(){
   snapDuration: '00:01:00',
   axisFormat: 'H:mm',
   timeFormat: 'H:mm',              
-  allDaySlot: false,
   height : 625,
-
+  allDaySlot: false,
   
   eventClick: function(event) { //イベントをクリックしたときに実行
     //編集
+    console.log(event.end)
     $(".update-form").fadeIn()
     $(".update-title").val(event.title)
     $(".form__cancel").click(function(){
@@ -142,11 +141,13 @@ $(document).ready(function(){
     })
   },
   eventResize: function(event) {
+    var start = event.start;
+    var end = event.end || start;
     eventdata = 
     {event:{
     id : event.id,
     start: event.start.format(),
-    end: event.end.format()
+    end: end.format()
     }
   }
   var url = `/events/${event.id}`
@@ -161,11 +162,24 @@ $(document).ready(function(){
   })
   },
   eventDrop: function(event) { // ドラック＆ドロップした時
-    eventdata = 
-      {event:{
-      id : event.id,
-      start: event.start.format(),
-      end: event.end.format()
+    var start = event.start;
+    var end = event.end || start;
+    if(event.allDay == true){
+      eventdata = 
+        {event:{
+        id : event.id,
+        start: event.start.format("YYYY-MM-DD"),
+        end: end.format("YYYY-MM-DD")
+        }
+      }
+      console.log(eventdata)
+    }else{
+        eventdata = 
+        {event:{
+        id : event.id,
+        start: event.start.format(),
+        end: event.end.format()
+        }
       }
     }
     var url = `/events/${event.id}`
@@ -181,16 +195,43 @@ $(document).ready(function(){
   }
     
   });
+  start_select = $(".form__start--select").html()
+  end_select = $(".form__end--select").html()
+
   $(".form__cancel").click(function(){
     $(".form-content").hide()
+    $("#allDay").removeAttr('checked').prop('checked', false).change()
+    $(".form__start--select").html(start_select)
+    $(".form__end--select").html(end_select)
+    $(".form__start").css("color", "black")
+    $(".form__end").css("color", "black")
+    $(".title").val("")
+    
   })
+  $("#allDay").click(function(){
+    
+    if($("#allDay").prop("checked")){
+      $(".form__start").css("color", "rgb(223, 247, 253)")
+      $("#_start_4i").remove()
+      $("#_start_5i").remove()
+      $(".form__end").css("color", "rgb(223, 247, 253)")
+      $("#_end_4i").remove()
+      $("#_end_5i").remove()
+    }else{
+      $(".form__start--select").html(start_select)
+      $(".form__end--select").html(end_select)
+      $(".form__start").css("color", "black")
+      $(".form__end").css("color", "black")
+    }
 
+  })
   $("#send").on("submit",function(e){
     e.preventDefault()
     $(".form-content").hide()
     var formData = new FormData(this);
     var url = $(this).attr("action");
-    console.log(url)
+    
+
     $.ajax({
       url: url,
       type: "POST",
