@@ -149,13 +149,16 @@ input, select {
      margin: 10px;
    }
    &__start{
-     margin-top:10px;
-     text-align: center;
+    &--select{
+      margin-top:10px;
+      text-align: center;
+    }
+    &--select select{
+      font-size: 19px;
+      cursor: pointer;
+    }
    }
-   &__start select{
-     font-size: 19px;
-     cursor: pointer;
-   }
+
    &__end {
     margin-top:10px;
     text-align: center;
@@ -264,6 +267,7 @@ input, select {
     }
   }
 }
+
 
 
 
