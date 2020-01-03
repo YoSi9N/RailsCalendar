@@ -143,6 +143,7 @@ input, select {
    padding: 25px;
    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
    border: solid 0.5px rgb(190, 190, 190);
+   color: black;
    &__add{
      font-size: 30px;
      text-align: center;
@@ -231,6 +232,7 @@ input, select {
   font-size: 18px;
 }
 .calendar-box{
+  z-index: 1;
   height: 650px;
   border-left: solid 25px  skyblue;
   border-right: solid 25px  skyblue;
@@ -247,14 +249,57 @@ input, select {
   padding: 10px;
 }
 .header{
+  
   background-color: rgba(0, 0, 0, 0.541);
   height: 50px;
   line-height: 30px;
   padding: 10px 30px;
   color: white;
+  &__left{
+    float: left;
+    &--btn{
+      display: block;
+      border: solid 1px white;
+      color: white;
+      text-decoration: none;
+      font-size: 25px;
+      font-weight: bold;
+      width: 230px;
+      text-align: center;
+    }
+  }
+  #toggle{
+    background-color: rgba(0, 0, 0, 0.705);
+    display: block;
+    border: solid 1px white;
+    height: 30px;
+    width: 175px;
+    text-align: center;
+    color: white;
+    position: relative;
+    height: 30px;
+    z-index: 10;
+  }
   &__right{
     float: right;
     display: flex;
+    &--groups{
+      width: 175px;
+      display:none;
+      &--group{
+        background-color: rgba(0, 0, 0, 0.705);
+        text-decoration: none;
+        display: block;
+        border: solid 1px white;
+        height: 30px;
+        width: 175px;
+        text-align: center;
+        color: white;
+        position: relative;
+        height: 30px;
+      }
+
+    }
     &--btn{
       display: block;
       border: solid 1px white;
@@ -262,12 +307,11 @@ input, select {
       color: white;
       text-decoration: none;
       height: 30px;
-      width: 100px;
+    
       text-align: center;
     }
   }
 }
-
 
 
 

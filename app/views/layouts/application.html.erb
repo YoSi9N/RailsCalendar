@@ -12,17 +12,32 @@
 
   <body>
   <div class="header">
-    <div class="header__right">
-    <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn" %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path, class: "header__right--btn" %>
-      <%= link_to "新規登録", new_user_registration_path, class: "header__right--btn" %>
-    <% end %>
     
-    </div>
+    <% if user_signed_in? %>
+      <div class="header__left">
+        <%= link_to "マイカレンダー",user_path(current_user.id), class: "header__left--btn" %>
+      </div>
+      <div class="header__right">
+      <div id="toggle">
+        <b>グループカレンダー</b>
+        <div class="header__right--groups">
+          <% current_user.groups.each do |group| %>
+            <%= link_to "#{group.name}", group_events_path(group.id), class: "header__right--groups--group" %>
+          <% end %>
+          <%= link_to "グループ作成", new_group_path, class: "header__right--groups--group" %>
+          
+        </div>
+        </div>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn" %>
+    <% else %>
+        <%= link_to "ログイン", new_user_session_path, class: "header__right--btn" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "header__right--btn" %>
+      </div>
+    <% end %>
   </div>
-  <%= yield %>
+</div>
+    <%= yield %>
+  
 
   </body>
 </html>

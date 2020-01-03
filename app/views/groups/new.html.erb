@@ -1,0 +1,27 @@
+
+
+<div class="form_group">
+  <h1 class="form_group__title">グループ作成</h1>
+  <%= form_with model: @group, local: true do |f| %>
+  <div class="form__box">
+    <div class="form__box--left">グループ名</div>
+    <div class="form__box--input">
+      <%= f.text_field :name%>
+    </div>
+  </div>
+  <div class="form__box">
+    <div class="form__box--left">メンバー検索</div>
+    <div class="form__box--input">
+      <%= f.collection_check_boxes :user_ids, User.all, :id, :name %> 
+    </div>
+  </div>
+  <div class="form__box">
+    <div class="form__box--left">加入メンバー</div>
+    <div class="form__box--right">
+      <p>a</p>
+      <p>b</p>
+    </div>
+  </div>
+    <input class="form__send" id="form__send" type="submit">
+  <% end %>
+</div> 
