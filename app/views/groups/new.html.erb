@@ -10,16 +10,35 @@
     </div>
   </div>
   <div class="form__box">
-    <div class="form__box--left">メンバー検索</div>
+    <div class="form__box--left">メンバー追加</div>
     <div class="form__box--input">
-      <%= f.collection_check_boxes :user_ids, User.all, :id, :name %> 
+      <input class="name-search" id="name-search" type="text">
     </div>
+    <div class="form__box--add"></div>
   </div>
   <div class="form__box">
     <div class="form__box--left">加入メンバー</div>
     <div class="form__box--right">
-      <p>a</p>
-      <p>b</p>
+      <div id="group-users" class="add-user">
+        <div class="chat-group-user clearfix js-chat-member">
+          <input name="group[user_ids][]" type="hidden" value="<%= current_user.id %>">
+          <p class="chat-group-user__name">
+            <%= current_user.name %>
+          </p>
+          <% @group.users.each do |user| %>
+            <% if current_user.name != user.name %>
+              <div class="chat-group-user clearfix js-chat-member">
+                <input name="group[user_ids][]" type="hidden" value="<%= user.id %>">
+                <p class="chat-group-user__name">
+                  <%= user.name %>
+                </p>
+                <a href="" class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn">削除</a>
+              </div>
+            <% end %>
+          <% end %>
+        
+        </div>
+      </div>
     </div>
   </div>
     <input class="form__send" id="form__send" type="submit">
