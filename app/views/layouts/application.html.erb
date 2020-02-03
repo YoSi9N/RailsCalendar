@@ -22,7 +22,10 @@
         <b>グループカレンダー</b>
         <div class="header__right--groups">
           <% current_user.groups.each do |group| %>
-            <%= link_to "#{group.name}", group_events_path(group.id), class: "header__right--groups--group" %>
+            <div class="header__right--groups--flex">
+              <%= link_to "#{group.name}", group_events_path(group.id), class: "header__right--groups--group" %>
+              <%= link_to "編集", "#"%>
+            </div>
           <% end %>
           <%= link_to "グループ作成", new_group_path, class: "header__right--groups--group" %>
           
@@ -30,10 +33,12 @@
         </div>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn" %>
     <% else %>
+      <div class="header__right">
         <%= link_to "ログイン", new_user_session_path, class: "header__right--btn" %>
         <%= link_to "新規登録", new_user_registration_path, class: "header__right--btn" %>
-      </div>
+      </div>  
     <% end %>
+    </div>
   </div>
 </div>
     <%= yield %>

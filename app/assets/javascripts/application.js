@@ -22,10 +22,10 @@
 $(function(){
   $("#toggle").hover(
     function(){
-      $(".header__right--groups").animate( { height: 'toggle' }, 'slow' )
+      $(".header__right--groups").animate( { height: 'toggle' }, 'fast' )
     },
     function(){
-      $(".header__right--groups").animate( { height: 'toggle' }, 'slow' )
+      $(".header__right--groups").animate( { height: 'toggle' }, 'fast' )
     }
     
   )

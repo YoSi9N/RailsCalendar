@@ -99,7 +99,6 @@ if(document.URL.match(/..users/)){
     
     eventClick: function(event) { //イベントをクリックしたときに実行
       //編集
-      console.log(event.end)
       $(".update-form").fadeIn()
       $(".update-title").val(event.title)
       $(".form__cancel").click(function(){
@@ -193,7 +192,6 @@ if(document.URL.match(/..users/)){
           end: end.format("YYYY-MM-DD")
           }
         }
-        console.log(eventdata)
       }else{
           eventdata = 
           {event:{

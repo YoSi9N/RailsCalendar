@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
     
   end
   def new
+    @user = User.find(current_user.id)
     @group = Group.new
     @group.users << current_user
   end

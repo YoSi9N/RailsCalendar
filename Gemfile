@@ -66,4 +66,5 @@ gem 'momentjs-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem "devise"
+gem 'font-awesome-sass'
 
