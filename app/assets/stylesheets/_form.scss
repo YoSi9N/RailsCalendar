@@ -139,7 +139,8 @@
   padding: 10px;
 }
 .header{
-  
+  display: flex;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.541);
   height: 50px;
   line-height: 30px;
@@ -150,7 +151,14 @@
     text-align: right;
   }
   &__left{
-    float: left;
+    span{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 10px;
+    }
     &--btn{
       display: block;
       border: solid 1px white;
@@ -175,7 +183,6 @@
     z-index: 10;
   }
   &__right{
-    float: right;
     display: flex;
     &--groups{
       width: 175px;
@@ -183,16 +190,26 @@
       &--flex{
         display: flex;
         background-color: rgba(0, 0, 0, 0.705);
-        text-decoration: none;
-        color: white;
         border: solid 1px white;
-        
+        .fa-users-cog{
+          text-decoration: none;
+          color: white;
+        }
       }
-      &--group{
-        background-color: rgba(0, 0, 0, 0.705);
+      &--new{
         text-decoration: none;
         display: block;
-        border: solid 1px white;
+        background-color: rgba(0, 0, 0, 0.705);
+        height: 30px;
+        width: 175px;
+        text-align: center;
+        color: white;
+        position: relative;
+      }
+      &--group{
+        text-decoration: none;
+        display: block;
+        border-right: 1px solid white;
         height: 30px;
         width: 175px;
         text-align: center;

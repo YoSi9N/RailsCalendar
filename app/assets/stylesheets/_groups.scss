@@ -42,9 +42,11 @@
         border-bottom: gray 1px solid;
         width: 628px;
       }
+      .group-border-bottom{
+        border-bottom: gray 1px solid;
+      }
       .group-user__name{
         padding-left: 20px;
-        width: 100%;
       }
       .user-search-add{
         z-index: 10;
@@ -60,6 +62,7 @@
       .user-search-remove{
         padding-right: 20px;
         color: red;
+        width: 52px;
       }
     }
   }

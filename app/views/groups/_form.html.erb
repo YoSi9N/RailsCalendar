@@ -1,0 +1,42 @@
+<%= form_with model: @group, local: true do |f| %>
+  <div class="form_group__box">
+    <div class="form_group__box--left">グループ名</div>
+    <div class="form_group__box--right">
+      <%= f.text_field :name%>
+    </div>
+  </div>
+  <div class="form_group__box">
+    <div class="form_group__box--left">メンバー追加</div>
+    <div class="form_group__box--right" id="search-user">
+      <input class="name-search" id="name-search" type="text">
+      <div class="form_group__box--add"></div>
+    </div>
+  </div>
+  <div class="form_group__box">
+    <div class="form_group__box--left">加入メンバー</div>
+    <div class="form_group__box--right">
+      <div id="group-users" class="add-user">
+        <div class="group-menber clearfix js-member">
+          <input name="group[user_ids][]" type="hidden" value="<%= current_user.id %>">
+          <p class="group-user__name group-border-bottom">
+            <%= current_user.name %>
+          </p>
+          <% @group.users.each do |user| %>
+            <% if current_user.name != user.name %>
+              <div class="group-user clearfix js-member">
+                <input name="group[user_ids][]" type="hidden" value="<%= user.id %>">
+                <p class="group-user__name">
+                  <%= user.name %>
+                </p>
+                <span class="user-search-remove group-user__btn group-user__btn--remove js-remove-btn">削除</span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form_group__input">
+    <input class="form_group__input--send" id="form_group__input--send" type="submit">
+  </div>
+<% end %>

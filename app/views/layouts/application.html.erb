@@ -17,6 +17,12 @@
       <div class="header__left">
         <%= link_to "マイカレンダー",user_path(current_user.id), class: "header__left--btn" %>
       </div>
+      <% if @group.present? %>
+        <div class="header__left">
+          <span><%= @group.name %></span>
+        </div>
+      <% end %>
+      
       <div class="header__right">
       <div id="toggle">
         <b>グループカレンダー</b>
@@ -24,10 +30,12 @@
           <% current_user.groups.each do |group| %>
             <div class="header__right--groups--flex">
               <%= link_to "#{group.name}", group_events_path(group.id), class: "header__right--groups--group" %>
-              <%= link_to "編集", "#"%>
+              <%= link_to edit_group_path(group.id) do %>
+                <i class="fas fa-users-cog"></i>
+              <% end %>
             </div>
           <% end %>
-          <%= link_to "グループ作成", new_group_path, class: "header__right--groups--group" %>
+          <%= link_to "グループ作成", new_group_path, class: "header__right--groups--new" %>
           
         </div>
         </div>
