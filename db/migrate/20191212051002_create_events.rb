@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.integer    :color_id
       t.boolean    :allDay, default: false, null: false
       t.references :user
+      t.references :group
       t.timestamps
     end
   end
