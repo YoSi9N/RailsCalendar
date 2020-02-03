@@ -1,4 +1,7 @@
 <div class="form_group">
   <h1 class="form_group__title">グループ編集</h1>
   <%= render partial: 'groups/form'%>
+  <div class="form_group__destroy">
+    <%= link_to "削除",group_path(params[:id]), method: :delete %>
+  </div>
 </div>
