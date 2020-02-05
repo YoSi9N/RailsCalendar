@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :events, only: [:index]
   end
   resources :events, only:[:create, :update, :destroy]
-  root "users#show"
+  root "events#top"
 end
