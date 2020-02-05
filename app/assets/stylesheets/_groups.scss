@@ -9,6 +9,18 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
+  &__errors{
+    padding: 40px 250px 0px 250px;
+    &--contents{
+      border: red solid 3px;
+      border-radius: 10px;
+      padding: 20px 40px;
+      li{
+        margin-top: 10px;
+        list-style: none;
+      }
+    }
+  }
   &__title{
     letter-spacing: 2px;
     font-size: 24px;
