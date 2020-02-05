@@ -1,4 +1,4 @@
-<div class="form-content" data-login-user="<%= current_user.id %>">
+<div class="form-content" id="user-js-key" data-login-user="<%= current_user.id %>">
   <div class="form-bottom">
     <div class="form">
       <%= form_with(model: @event, local: true, id: :send) do |form| %>

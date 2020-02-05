@@ -9,7 +9,7 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
           <div class="field-label">
-            <%= f.label :name %> <em>(6 characters maximum)</em><br />
+            <%= f.label :name %>
           </div>
           <div class="field-input">
             <%= f.text_field :name, autofocus: true, maxlength: "6" %>          
@@ -28,7 +28,7 @@
           <div class="field-label">
             <%= f.label :password %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(<%= @minimum_password_length %>文字以上)</em>
             <% end %><br />
           </div>
           <div class="field-input">

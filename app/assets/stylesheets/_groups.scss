@@ -9,6 +9,21 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
+  &__destroy{
+    width: 25%;
+    margin: 10px auto 0 auto;
+    text-align: center;
+    a{
+      width: 100%;
+      display: inline-block;
+      padding: 12px;
+      font-size: 18px;
+      background-color: red;
+      border: 1px solid gray;
+      color: white;
+      text-decoration: none;
+    }
+  }
   &__errors{
     padding: 40px 250px 0px 250px;
     &--contents{
@@ -75,12 +90,14 @@
         padding-right: 20px;
         color: red;
         width: 52px;
+        cursor: pointer;
       }
     }
   }
   &__input{
     text-align: center;
     &--send{
+      cursor: pointer;
       display: inline-block;
       width: 25%;
       padding: 10px;

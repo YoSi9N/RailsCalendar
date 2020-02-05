@@ -1,6 +1,6 @@
-if(document.URL.match(/..users/)){
+
   $(document).ready(function(){
-    
+    if(document.getElementById("user-js-key") != null){
     var user_id = $(".form-content").data("login-user") 
     $('#calendar').fullCalendar({
       
@@ -271,5 +271,7 @@ if(document.URL.match(/..users/)){
       })
 
     })
+  }
   });
-}
+
+

@@ -1,15 +1,15 @@
 class EventsController < ApplicationController
-
+  before_action :not_group_member, except: [:new]
   def index
-    @group = Group.find(params[:group_id])
-    @events = @group.events
     respond_to do |format|
       format.html
       format.json { render json: @events }
     end
   end
+
   def new
   end
+
   def create
     if params[:"start(4i)"]
       setting_allday_false

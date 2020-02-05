@@ -21,8 +21,11 @@
         <div class="header__left">
           <span><%= @group.name %></span>
         </div>
+      <%else%>
+        <div class="header__left">
+          <span><%= @user.name %></span>
+        </div>
       <% end %>
-      
       <div class="header__right">
       <div id="toggle">
         <b>グループカレンダー</b>
