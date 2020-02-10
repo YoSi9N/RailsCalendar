@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :events, only: [:index]
   end
   resources :events, only:[:create, :update, :destroy]
+  post '/callback' => 'linebot#callback'
   root "users#show"
 end
