@@ -73,4 +73,5 @@ gem 'pry-rails'
 gem 'active_hash'
 gem "devise"
 gem 'font-awesome-sass'
+gem 'line-bot-api'
 
