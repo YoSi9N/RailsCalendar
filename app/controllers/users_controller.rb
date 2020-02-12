@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :not_correct_user
   def index
     return nil if params[:keyword] == ""

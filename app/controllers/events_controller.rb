@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :not_group_member, except: [:new]
+  before_action :authenticate_user!
   def index
     respond_to do |format|
       format.html
