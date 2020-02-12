@@ -1,5 +1,5 @@
-
 class LinebotController < ApplicationController
+  protect_from_forgery
   require 'line/bot'
 
   def callback
