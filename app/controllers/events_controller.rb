@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :not_group_member, except: [:new]
+  before_action :not_group_member, only: [:index]
   before_action :authenticate_user!
   def index
     respond_to do |format|
@@ -64,8 +64,6 @@ class EventsController < ApplicationController
   def setting_allday_false
     @start_allday_false = params[:"start(1i)"] + params[:"start(2i)"] + params[:"start(3i)"] + params[:"start(4i)"] + params[:"start(5i)"]
     @end_allday_false = params[:"end(1i)"] + params[:"end(2i)"] + params[:"end(3i)"] + params[:"end(4i)"] + params[:"end(5i)"]
-
-
   end
   def setting_allday_true
     @start_allday_true = params[:"start(1i)"] + params[:"start(2i)"] + params[:"start(3i)"]

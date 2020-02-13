@@ -3,7 +3,7 @@ namespace :calendar_task do
   task push_line_message_morning: :environment do # 以下にpush機能のタスクを書く。
     message = {
       type: 'text',
-      text: 'おはようございます！ AM 7:00です。今日の予定を確認されますか？'
+      text: "おはようございます!\n#{Date.current.strftime("%-m月%-d日")}AM 7:00です。\n今日の予定を確認されるなら名前の入力をお願いします！"
     }
     client = Line::Bot::Client.new { |config|
       config.channel_secret = Rails.application.credentials[:LINE_CHANNEL_SECRET]

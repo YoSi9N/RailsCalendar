@@ -15,10 +15,37 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: event.message['text']
-          }
+          if User.find_by(name: event.message['text']).present?
+            user = User.find_by(name: event.message['text'])
+            events = Event.where(user_id: user.id).order("start ASC")
+            start = ""
+            events.each do |event|
+              if event.start < 1.day.since && event.start >= DateTime.now
+                if event.title.present?
+                  push = "#{event.start.strftime("%-m月%-d日 %H:%M")}\n#{event.title}\n"
+                else
+                  push = "#{event.start.strftime("%-m月%-d日 %H:%M")}\n"
+                end
+                start = start + push
+              end
+            end
+            if start == ""
+              message = {
+              type: 'text',
+              text: "#{user.name}さんの今日の予定はありません！"
+              }
+            else
+              message = {
+                type: 'text',
+                text: "#{user.name}さんの24時間の予定は\n#{start}の予定になっています。"
+              }
+            end
+          else
+            message = {
+              type: 'text',
+              text: "ユーザーが見つかりませんでした！\n正しいニックネームの入力をお願いします！"
+            }
+          end
         end
       end
       client.reply_message(event['replyToken'], message)
