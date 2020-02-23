@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
   resources :events, only:[:create, :update, :destroy]
   post '/callback' => 'linebot#callback'
-  root "users#show"
+  root "events#top"
 end
