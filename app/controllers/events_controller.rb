@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :not_group_member, only: [:index]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top]
   def index
     respond_to do |format|
       format.html
@@ -47,9 +47,14 @@ class EventsController < ApplicationController
       render :index
     end
   end
+
   def destroy
     event = Event.find(params[:id])
     event.destroy
+  end
+
+  def top
+    @user = User.new
   end
   private
   def event_params

@@ -12,11 +12,10 @@
 
   <body>
   <div class="header">
-    
+    <div class="header__left">
+      <%= link_to "Railsカレンダー", root_path , class: "header__left--btn" %>
+    </div>
     <% if user_signed_in? %>
-      <div class="header__left">
-        <%= link_to "マイカレンダー",user_path(current_user.id), class: "header__left--btn" %>
-      </div>
       <% if @group.present? %>
         <div class="header__left">
           <span><%= @group.name %></span>
@@ -28,8 +27,9 @@
       <% end %>
       <div class="header__right">
       <div id="toggle">
-        <b>グループカレンダー</b>
+        <b>カレンダーリスト</b>
         <div class="header__right--groups">
+          <%= link_to "マイカレンダー",user_path(current_user.id), class: "header__right--groups--new" %>
           <% current_user.groups.each do |group| %>
             <div class="header__right--groups--flex">
               <%= link_to "#{group.name}", group_events_path(group.id), class: "header__right--groups--group" %>

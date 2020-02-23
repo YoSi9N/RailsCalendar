@@ -1,0 +1,22 @@
+<div class="top-contents">
+  <div class="top-contents__content">
+    <%= image_tag 'top-events' %>
+    <h1>Railsカレンダーにようこそ！</h1>
+    <p>カレンダーに予定を追加、多人数で予定を共有できるグループ機能、Lineで1日の予定をピックアップする機能などあります！</p>
+  </div>
+  <div class="top-contents__content">
+    <div class="top-contents__content--images">
+      <%= image_tag 'top-test3',class: "test3"%>
+      <%= image_tag 'top-line-bot',class: "line-bot"%>
+    </div>
+    <h1>LINEで1日の予定を確認</h1>
+    <p>登録した名前を入力するだけで調べたい時間から24時間分の予定をLineにピックアップ！</p>
+  </div>
+  <div class="top-contents__content">
+    <div class="top-contents__content--images">
+      <%= image_tag 'top-line', class: "line"%>
+    </div>
+    <h1>Railsカレンダーと友達登録は上のQRコードで！</h1>
+    <%= link_to "Railsカレンダーを始める", new_user_registration_path, class: "signup-btn" %>
+  </div>
+</div>

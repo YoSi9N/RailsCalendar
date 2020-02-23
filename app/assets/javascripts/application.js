@@ -9,7 +9,6 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 //= require jquery
 //= require moment
 //= require moment/ja.js
@@ -17,7 +16,6 @@
 //= require fullcalendar/lang/ja
 //= require rails-ujs
 //= require activestorage
-
 //= require_tree .
 $(function(){
   $("#toggle").hover(
