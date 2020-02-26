@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.create(group_params)
     if @group.save
-      redirect_to user_path(current_user.id)
+      redirect_to group_events_path(@group.id)
     else
       render :new
     end
