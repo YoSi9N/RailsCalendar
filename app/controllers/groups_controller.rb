@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     @user = User.find(current_user.id)
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to user_path(current_user.id)
+      redirect_to group_events_path(@group.id)
     else
       render :new
     end
