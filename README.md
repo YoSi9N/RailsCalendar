@@ -1,24 +1,50 @@
-# README
+# Railsカレンダー
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Railsカレンダーとは？
 
-Things you may want to cover:
+日付を確認できる基本的なカレンダー機能に加え、予定を追加する機能、多人数で予定を共有できるグループ機能、Lineで1日の予定をピックアップする機能などあります。
 
-* Ruby version
+***デモ***
 
-* System dependencies
+![readme1](https://user-images.githubusercontent.com/58178278/75316974-25cb8180-58aa-11ea-8e8c-5c139c3e010a.gif)
 
-* Configuration
+![readme-line](https://user-images.githubusercontent.com/58178278/75316999-34199d80-58aa-11ea-861d-694c013166a3.gif)
 
-* Database creation
+## 開発環境
 
-* Database initialization
+- Mac OS Catalina
+- Ruby 2.5.1
+- Rails 5.2.3
+- Mysql2 0.5.3
 
-* How to run the test suite
+## インストール
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ git clone https://github.com/YoSi9N/RailsCalendar.git
+$ cd RailsCalendar
+$ bundle
+$ rails db:create
+$ rails db:migrate
+```
 
-* Deployment instructions
+## 基本的なカレンダーの使い方
+1. ユーザーの新規登録を行う
+2. イベント追加ボタン、又は日付部分をドラックすることでイベントを追加することが可能。<br>
+(開始時間より終了時間を一分でも遅くしないとエラーがでます。)
+3. イベントをクリックするとタイトル、色の変更、イベントの削除が可能。
+4. イベントをクリック＆ドロップを行うことでイベントを移動させることが可能。<br>(終日イベントのみ終了日にちの延長が可能)
+5. カレンダー右上の月、週、日ボタンを押すことで、月ごと、週ごと、日ごと、のカレンダータイプに変更可能。<br>
+(週、日のみドラックでイベントの開始時間、終了時間の変更が可能)
+## グループ機能
+1. headerのカレンダーリストからグループ作成を行う
+2. グループ名、追加するメンバーを入力する。<br>
+3. グループ編集はカレンダーリストのグループ名の右にあるアイコンをクリックすることで行うことができる。
 
-* ...
+## LINEで予定の確認方法
+1. トップページでLINEのQRコードを読み取り、友達追加を行う。
+2. ユーザー登録した時の名前をLINE BOTに送信する。
+
+## 作者
+
+YoSi9N <br>
+Email : n66.kitayama.syota@gmail.com
