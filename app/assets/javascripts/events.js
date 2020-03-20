@@ -58,7 +58,7 @@ if(document.URL.match(/..events/)){
     snapDuration: '00:01:00',
     axisFormat: 'H:mm',
     timeFormat: 'H:mm',              
-    height : 625,
+    height: window.innerHeight - 75,
     allDaySlot: false,
     
     select: function(start,end){

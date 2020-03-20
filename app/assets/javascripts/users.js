@@ -3,7 +3,6 @@
     if(document.getElementById("user-js-key") != null){
     var user_id = $(".form-content").data("login-user") 
     $('#calendar').fullCalendar({
-      
       header:{
         left:'prev,today,next',
         center:'title,eventListButton',
@@ -63,7 +62,7 @@
     snapDuration: '00:01:00',
     axisFormat: 'H:mm',
     timeFormat: 'H:mm',              
-    height : 625,
+    height: window.innerHeight - 75,
     allDaySlot: false,
     
     select: function(start,end){
